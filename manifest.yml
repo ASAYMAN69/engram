@@ -3,7 +3,7 @@
 app:
   runtime:
     name: nodejs24.x
-  id: REPLACE_WITH_FORGE_APP_ID
+  id: ari:cloud:ecosystem::app/109ae825-f25c-40ae-ad6b-1ac96b4efa6c
 
 modules:
   jira:issuePanel:
@@ -13,7 +13,6 @@ modules:
         function: resolver
       title: Engram
       icon: https://developer.atlassian.com/platform/forge/images/issue-panel-icon.svg
-
   # Rovo agent + actions added in Day 2
   # rovo:agent: ...
 
