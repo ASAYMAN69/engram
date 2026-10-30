@@ -1,5 +1,4 @@
 # Engram - Atlassian Forge app
-# Run `forge register` to populate app.id before deploying.
 app:
   runtime:
     name: nodejs24.x
@@ -13,16 +12,13 @@ modules:
         function: resolver
       title: Engram
       icon: https://developer.atlassian.com/platform/forge/images/issue-panel-icon.svg
-  # Rovo agent + actions added in Day 2
-  # rovo:agent: ...
+  function:
+    - key: resolver
+      handler: index.handler
 
 resources:
   - key: main
     path: frontend/dist
-
-function:
-  - key: resolver
-    handler: index.handler
 
 permissions:
   scopes:
