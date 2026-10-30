@@ -65,6 +65,11 @@ export default function PrecedentCard({
           <div style={{ marginTop: 6, fontSize: 12, fontStyle: "italic" }}>{conflict.reason}</div>
         </div>
       )}
+      <div style={{ marginTop: 8 }}>
+        <a data-testid="timeline-link" href="#timeline" style={{ fontSize: 12 }}>
+          View Timeline
+        </a>
+      </div>
     </div>
   );
 }

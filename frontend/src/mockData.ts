@@ -13,6 +13,8 @@ export interface Decision {
   tags: string[];
   sourceUrl: string;
   sourceType: string;
+  supersededBy?: string;
+  supersedes?: string;
 }
 
 export const MOCK_DECISIONS: Decision[] = [
