@@ -2,11 +2,11 @@
 import Resolver from "@forge/resolver";
 import { loadDemoData } from "./storage/seed.js";
 import { searchDecisions } from "./storage/index.js";
+import { extractDecision, searchDecisionsResolver, checkConflict } from "./resolvers.js";
 
 const resolver = new Resolver();
 
 resolver.define("getText", (req) => {
-  console.log(req);
   return "Hello Engram";
 });
 
@@ -16,8 +16,17 @@ resolver.define("loadDemoData", async () => {
 
 resolver.define("searchDecisionsResolver", async (req) => {
   const input = (req && req.payload) ? req.payload : (req || {});
-  const { keywords = [], tags = [] } = input;
-  return searchDecisions(keywords, tags);
+  return searchDecisionsResolver(input);
+});
+
+resolver.define("extractDecision", async (req) => {
+  const input = (req && req.payload) ? req.payload : (req || {});
+  return extractDecision(input);
+});
+
+resolver.define("checkConflict", async (req) => {
+  const input = (req && req.payload) ? req.payload : (req || {});
+  return checkConflict(input);
 });
 
 export const handler = resolver.getDefinitions();
