@@ -1,10 +1,20 @@
-import Resolver from "@forge/resolver";
+const r = require("./resolvers");
 
-const resolver = new Resolver();
+let handler;
+try {
+  const Resolver = require("@forge/resolver");
+  const ResolverCtor = Resolver && (Resolver.default || Resolver);
+  const resolver = new ResolverCtor();
+  resolver.define("getText", r.getText);
+  resolver.define("loadDemoData", r.loadDemoData);
+  resolver.define("extractDecision", r.extractDecision);
+  resolver.define("searchDecisions", r.searchDecisionsResolver);
+  resolver.define("searchDecisionsResolver", r.searchDecisionsResolver);
+  resolver.define("checkConflict", r.checkConflict);
+  handler = resolver.getDefinitions();
+} catch (e) {
+  handler = r;
+}
 
-resolver.define("getText", (req) => {
-  console.log(req);
-  return "Hello Engram";
-});
-
-export const handler = resolver.getDefinitions();
+module.exports = { handler };
+module.exports.handler = handler;

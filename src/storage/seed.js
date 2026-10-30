@@ -1,0 +1,135 @@
+// Seed decision records for Engram demo data.
+const seed = [
+  {
+    id: "dec-001",
+    title: "Use Redis for session caching",
+    summary: "Store user sessions in Redis with a 24h TTL instead of in the primary database.",
+    reasoning: "Reduces DB load and improves login latency; Redis is already operated by platform team.",
+    alternativesRejected: ["DB-backed sessions", "In-memory node sessions"],
+    decidedBy: "Alice Chen",
+    decidedAt: "2025-09-12T10:00:00Z",
+    status: "active",
+    tags: ["caching", "redis", "sessions", "performance"],
+    sourceUrl: "https://confluence.example.com/pages/1001",
+    sourceType: "confluence"
+  },
+  {
+    id: "dec-002",
+    title: "Adopt PostgreSQL as primary datastore",
+    summary: "Use PostgreSQL 15 for all transactional data; no MongoDB.",
+    reasoning: "Strong consistency, JSONB flexibility, team expertise.",
+    alternativesRejected: ["MongoDB", "MySQL"],
+    decidedBy: "Bob Rivera",
+    decidedAt: "2025-08-01T09:00:00Z",
+    status: "active",
+    tags: ["database", "postgres", "storage"],
+    sourceUrl: "https://confluence.example.com/pages/1002",
+    sourceType: "confluence"
+  },
+  {
+    id: "dec-003",
+    title: "JWT-based authentication with refresh tokens",
+    summary: "Authenticate users via short-lived JWTs (15min) plus refresh tokens (7d).",
+    reasoning: "Stateless auth scales horizontally; refresh tokens limit exposure.",
+    alternativesRejected: ["Session cookies", "OAuth only"],
+    decidedBy: "Carol Diaz",
+    decidedAt: "2025-09-20T11:00:00Z",
+    status: "active",
+    tags: ["auth", "jwt", "security"],
+    sourceUrl: "https://jira.example.com/browse/ENG-42",
+    sourceType: "jira"
+  },
+  {
+    id: "dec-004",
+    title: "No client-side caching of user PII",
+    summary: "Do not cache any user PII in browser or edge caches.",
+    reasoning: "Privacy/compliance requirement; reduces data exposure risk.",
+    alternativesRejected: ["Service worker cache", "localStorage"],
+    decidedBy: "Dana Park",
+    decidedAt: "2025-10-01T08:00:00Z",
+    status: "active",
+    tags: ["privacy", "caching", "pii", "security"],
+    sourceUrl: "https://confluence.example.com/pages/1004",
+    sourceType: "confluence"
+  },
+  {
+    id: "dec-005",
+    title: "Use Tailwind CSS for styling",
+    summary: "All frontend styling via Tailwind utility classes; no CSS-in-JS.",
+    reasoning: "Consistent design tokens and smaller bundle.",
+    alternativesRejected: ["styled-components", "CSS modules"],
+    decidedBy: "Eve Torres",
+    decidedAt: "2025-07-15T12:00:00Z",
+    status: "active",
+    tags: ["frontend", "styling", "tailwind"],
+    sourceUrl: "https://jira.example.com/browse/ENG-10",
+    sourceType: "jira"
+  },
+  {
+    id: "dec-006",
+    title: "Monorepo with npm workspaces",
+    summary: "Keep backend, frontend, and shared types in one repo using npm workspaces.",
+    reasoning: "Simplifies cross-package changes and versioning.",
+    alternativesRejected: ["Separate repos", "Lerna"],
+    decidedBy: "Frank Okafor",
+    decidedAt: "2025-06-30T10:00:00Z",
+    status: "active",
+    tags: ["repo", "monorepo", "tooling"],
+    sourceUrl: "https://confluence.example.com/pages/1006",
+    sourceType: "confluence"
+  },
+  {
+    id: "dec-007",
+    title: "Migrate from REST to GraphQL (superseded)",
+    summary: "Move public API from REST to GraphQL.",
+    reasoning: "Unified endpoint and flexible queries.",
+    alternativesRejected: ["gRPC", "Keep REST"],
+    decidedBy: "Grace Lee",
+    decidedAt: "2025-05-10T10:00:00Z",
+    status: "superseded",
+    tags: ["api", "graphql", "rest"],
+    sourceUrl: "https://confluence.example.com/pages/1007",
+    sourceType: "confluence"
+  },
+  {
+    id: "dec-008",
+    title: "Keep REST API; do not migrate to GraphQL",
+    summary: "Retain REST for public API; GraphQL migration cancelled.",
+    reasoning: "Cost/benefit not justified; clients already integrated with REST.",
+    alternativesRejected: ["GraphQL migration"],
+    decidedBy: "Henry Wu",
+    decidedAt: "2025-10-15T10:00:00Z",
+    status: "active",
+    tags: ["api", "rest", "graphql"],
+    sourceUrl: "https://confluence.example.com/pages/1008",
+    sourceType: "confluence"
+  },
+  {
+    id: "dec-009",
+    title: "Use Forge KVS for storage",
+    summary: "Persist decisions in Forge KVS / Custom Entities only.",
+    reasoning: "No external DB allowed in Forge runtime.",
+    alternativesRejected: ["External Postgres", "DynamoDB"],
+    decidedBy: "Ivy Zhang",
+    decidedAt: "2025-10-20T10:00:00Z",
+    status: "active",
+    tags: ["storage", "forge", "kvs"],
+    sourceUrl: "https://jira.example.com/browse/ENG-99",
+    sourceType: "jira"
+  },
+  {
+    id: "dec-010",
+    title: "Tag-based keyword search (no embeddings)",
+    summary: "Search decisions using tags + keyword scoring; no vector embeddings.",
+    reasoning: "Keeps infra simple and deterministic.",
+    alternativesRejected: ["Vector DB", "Embeddings"],
+    decidedBy: "Jack Novak",
+    decidedAt: "2025-10-22T10:00:00Z",
+    status: "active",
+    tags: ["search", "tags", "no-embeddings"],
+    sourceUrl: "https://confluence.example.com/pages/1010",
+    sourceType: "confluence"
+  }
+];
+
+module.exports = seed;
