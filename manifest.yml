@@ -14,6 +14,8 @@ modules:
       handler: actions/searchDecisions.run
     - key: check-conflict-fn
       handler: actions/checkConflict.run
+    - key: issue-created-fn
+      handler: triggers/issueCreated.run
 
   jira:issuePanel:
     - key: engram-issue-panel
@@ -23,12 +25,18 @@ modules:
       title: Engram
       icon: https://developer.atlassian.com/platform/forge/images/issue-panel-icon.svg
 
+  trigger:
+    - key: engram-issue-created
+      function: issue-created-fn
+      events:
+        - avi:jira:created:issue
+
   jira:projectPage:
-    - key: engram-decision-health
+    - key: engram-dashboard
       resource: main
       resolver:
         function: resolver
-      title: Decision Health
+      title: Engram
       icon: https://developer.atlassian.com/platform/forge/images/issue-panel-icon.svg
 
   rovo:agent:
@@ -80,4 +88,5 @@ resources:
 permissions:
   scopes:
     - read:jira-work
+    - write:jira-work
     - storage:app

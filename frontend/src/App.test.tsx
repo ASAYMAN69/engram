@@ -1,6 +1,9 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 import App from "./App";
+
+const { invoke } = vi.hoisted(() => ({ invoke: vi.fn() }));
+vi.mock("@forge/bridge", () => ({ invoke, view: { getContext: vi.fn().mockResolvedValue({}) } }));
 
 describe("App", () => {
   it("renders relevant precedents panel", async () => {
