@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@forge/api": "^8.4.0",
-    "@forge/resolver": "^2.0.2"
+    "@forge/resolver": "^2.0.2",
+    "@forge/storage": "^2.0.3"
   }
 }
