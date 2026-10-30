@@ -8,12 +8,12 @@ modules:
   function:
     - key: resolver
       handler: index.handler
-    - key: extract-decision
-      handler: src/actions/extractDecision.run
-    - key: search-decisions
-      handler: src/actions/searchDecisions.run
-    - key: check-conflict
-      handler: src/actions/checkConflict.run
+    - key: extract-decision-fn
+      handler: actions/extractDecision.run
+    - key: search-decisions-fn
+      handler: actions/searchDecisions.run
+    - key: check-conflict-fn
+      handler: actions/checkConflict.run
 
   jira:issuePanel:
     - key: engram-issue-panel
@@ -35,44 +35,47 @@ modules:
     - key: engram-agent
       name: Engram
       description: Decision memory assistant for software teams.
-      prompt:
-        resource: engram-prompt
+      prompt: "resources/engram-prompt.txt"
       actions:
         - extract-decision
         - search-decisions
         - check-conflict
 
-  rovo:action:
+  action:
     - key: extract-decision
       name: extractDecision
       description: Extract a structured decision record from text (unsaved, for confirmation).
-      function: extract-decision
+      function: extract-decision-fn
+      actionVerb: GET
       inputs:
         text:
+          title: Text
+          description: The text (ticket/page content) to extract a decision from.
           type: string
-          required: true
     - key: search-decisions
       name: searchDecisions
       description: Search past decisions by question; returns matches with source links.
-      function: search-decisions
+      function: search-decisions-fn
+      actionVerb: GET
       inputs:
         question:
+          title: Question
+          description: The question to search past decisions for.
           type: string
-          required: true
     - key: check-conflict
       name: checkConflict
       description: Check whether a proposed change contradicts an active decision.
-      function: check-conflict
+      function: check-conflict-fn
+      actionVerb: GET
       inputs:
         proposedChange:
+          title: Proposed change
+          description: The proposed change to check against active decisions.
           type: string
-          required: true
 
 resources:
   - key: main
     path: frontend/dist
-  - key: engram-prompt
-    path: resources/engram-prompt.txt
 
 permissions:
   scopes:
