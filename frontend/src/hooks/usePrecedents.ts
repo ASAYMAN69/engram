@@ -5,6 +5,7 @@ import type { Decision } from "../mockData";
 
 export interface Match {
   decision: Decision;
+  proposed?: string;
   conflict?: { conflicts: boolean; reason: string; decisionId?: string };
 }
 
@@ -24,6 +25,7 @@ export function usePrecedents() {
       const withConflicts = await Promise.all(
         top.map(async (d) => ({
           decision: d,
+          proposed,
           conflict: await checkConflict(proposed, d.id),
         }))
       );
