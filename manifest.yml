@@ -14,6 +14,8 @@ modules:
       handler: actions/searchDecisions.run
     - key: check-conflict-fn
       handler: actions/checkConflict.run
+    - key: issue-created-fn
+      handler: triggers/issueCreated.run
 
   jira:issuePanel:
     - key: engram-issue-panel
@@ -73,6 +75,12 @@ modules:
           description: The proposed change to check against active decisions.
           type: string
 
+  trigger:
+    - key: issue-created-trigger
+      function: issue-created-fn
+      events:
+        - avi:jira:issue:created
+
 resources:
   - key: main
     path: frontend/dist
@@ -80,4 +88,5 @@ resources:
 permissions:
   scopes:
     - read:jira-work
+    - write:jira-work
     - storage:app
