@@ -249,6 +249,7 @@ export default function DecisionMap({ decisions: propDecisions, onSelect, width 
                 style={{ cursor: "pointer" }}
               >
                 <circle
+                  data-testid="decision-node"
                   r={selected ? 16 : 12}
                   fill={color}
                   stroke={selected ? "var(--ds-text, #172b4d)" : "var(--ds-background-neutral, #ffffff)"}
