@@ -1,0 +1,122 @@
+:root {
+  --ds-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --ds-space-050: 4px;
+  --ds-space-100: 8px;
+  --ds-space-200: 16px;
+  --ds-space-300: 24px;
+  --ds-space-400: 32px;
+  --ds-border-radius-100: 4px;
+  --ds-border-radius-200: 6px;
+  --ds-border-radius-300: 8px;
+  --ds-border: #dfe1e6;
+  --ds-surface: #ffffff;
+  --ds-background: #f4f5f7;
+  --ds-text: #172b4d;
+  --ds-text-subtle: #42526e;
+  --ds-text-inverse: #ffffff;
+  --ds-text-success: #00875a;
+  --ds-text-danger: #de350b;
+  --ds-text-warning: #ff8b00;
+  --ds-background-brand-bold: #0052cc;
+  --ds-background-success-bold: #36b37e;
+  --ds-background-warning-bold: #ff991f;
+  --ds-background-danger-bold: #de350b;
+  --ds-background-danger: #ffebe6;
+  --ds-background-neutral: #f4f5f7;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ds-border: #3b4357;
+    --ds-surface: #1d2125;
+    --ds-background: #101214;
+    --ds-text: #e8ecf4;
+    --ds-text-subtle: #a5adba;
+    --ds-text-inverse: #172b4d;
+    --ds-background-brand-bold: #4c9aff;
+    --ds-background-success-bold: #57d9a3;
+    --ds-background-warning-bold: #ffc400;
+    --ds-background-danger-bold: #ff7452;
+    --ds-background-danger: #3b1f1a;
+    --ds-background-neutral: #22272b;
+  }
+}
+
+html[data-theme="dark"], body[data-theme="dark"], .dark {
+  --ds-border: #3b4357;
+  --ds-surface: #1d2125;
+  --ds-background: #101214;
+  --ds-text: #e8ecf4;
+  --ds-text-subtle: #a5adba;
+  --ds-text-inverse: #172b4d;
+  --ds-background-brand-bold: #4c9aff;
+  --ds-background-success-bold: #57d9a3;
+  --ds-background-warning-bold: #ffc400;
+  --ds-background-danger-bold: #ff7452;
+  --ds-background-danger: #3b1f1a;
+  --ds-background-neutral: #22272b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--ds-font-family);
+  background: var(--ds-background);
+  color: var(--ds-text);
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--ds-background-neutral) 25%, var(--ds-surface) 50%, var(--ds-background-neutral) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite;
+  border-radius: var(--ds-border-radius-200);
+}
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.card-hover {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ds-background-brand-bold);
+  outline-offset: 2px;
+}
+
+.toast {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  padding: 12px 16px;
+  border-radius: var(--ds-border-radius-200);
+  background: var(--ds-surface);
+  color: var(--ds-text);
+  border: 1px solid var(--ds-border);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  z-index: 9999;
+  animation: slideIn 0.2s ease;
+}
+@keyframes slideIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.countup { font-variant-numeric: tabular-nums; }
+
+.bar { transition: height 0.6s ease; }
+
+.heatmap-cell { transition: transform 0.1s ease; }
+.heatmap-cell:hover { transform: scale(1.15); }
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-in { animation: countUp 0.5s ease both; }

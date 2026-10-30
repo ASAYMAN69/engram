@@ -40,6 +40,7 @@ export default function LogDecision({ text = "", onSaved }: LogDecisionProps) {
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [toast, setToast] = useState<string | null>(null);
 
   async function handleLog() {
     setLoading(true);
@@ -100,6 +101,8 @@ export default function LogDecision({ text = "", onSaved }: LogDecisionProps) {
       onSaved?.(payload);
       setOpen(false);
       setDraft(null);
+      setToast("Decision saved");
+      setTimeout(() => setToast(null), 2500);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to save decision");
     } finally {
@@ -253,6 +256,7 @@ export default function LogDecision({ text = "", onSaved }: LogDecisionProps) {
           </div>
         </form>
       )}
+      {toast && <div className="toast" role="status">{toast}</div>}
     </div>
   );
 }

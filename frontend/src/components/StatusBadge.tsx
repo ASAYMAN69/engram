@@ -1,12 +1,13 @@
 import React from "react";
 
+const COLORS: Record<string, { bg: string; fg: string }> = {
+  active: { bg: "var(--ds-background-success-bold, #36b37e)", fg: "#ffffff" },
+  superseded: { bg: "var(--ds-background-neutral, #6b778c)", fg: "#ffffff" },
+  revisited: { bg: "var(--ds-background-warning-bold, #ff991f)", fg: "#172b4d" },
+};
+
 export default function StatusBadge({ status }: { status: string }) {
-  const color =
-    status === "active"
-      ? "var(--ds-text-success, #00875a)"
-      : status === "superseded"
-      ? "var(--ds-text-danger, #de350b)"
-      : "var(--ds-text-warning, #ff8b00)";
+  const c = COLORS[status] ?? { bg: "var(--ds-background-neutral, #6b778c)", fg: "#ffffff" };
   return (
     <span
       data-testid="status-badge"
@@ -16,8 +17,8 @@ export default function StatusBadge({ status }: { status: string }) {
         borderRadius: 12,
         fontSize: 12,
         fontWeight: 600,
-        color: "#fff",
-        background: color,
+        color: c.fg,
+        background: c.bg,
         textTransform: "capitalize",
       }}
     >
