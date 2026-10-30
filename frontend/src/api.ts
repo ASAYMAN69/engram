@@ -64,6 +64,20 @@ export async function searchDecisions(keywords: string[], tags: string[] = []): 
   return result;
 }
 
+export async function loadDemoData(): Promise<{ count: number }> {
+  try {
+    const b = await bridge();
+    const invoke = b?.invoke;
+    if (invoke) {
+      const res: any = await invoke("loadDemoData");
+      if (res && typeof res === "object") return { count: Number(res.count) || 0 };
+    }
+  } catch (e) {
+    // fall back
+  }
+  return { count: 18 };
+}
+
 export async function checkConflict(proposedChange: string, decisionId: string): Promise<{ conflicts: boolean; reason: string; decisionId?: string }> {
   try {
     const b = await bridge();
