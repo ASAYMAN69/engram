@@ -47,6 +47,11 @@ export default function PrecedentCard({
           Possible conflict: {conflict.reason}
         </div>
       )}
+      <div style={{ marginTop: 8 }}>
+        <a data-testid="timeline-link" href="#timeline" style={{ fontSize: 12 }}>
+          View Timeline
+        </a>
+      </div>
     </div>
   );
 }
