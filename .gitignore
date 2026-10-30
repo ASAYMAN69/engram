@@ -1,0 +1,46 @@
+# Planning docs (local only, not pushed)
+AGENT.md
+day0.md
+day1.md
+day2.md
+day3.md
+day4.md
+CLAUDE.md
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# Forge
+.forge/
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Docker
+*.log
+
+# Test coverage
+coverage/
+
+# Agent workflow state (local only)
+AGENTS/
