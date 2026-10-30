@@ -81,6 +81,12 @@ modules:
           description: The proposed change to check against active decisions.
           type: string
 
+  trigger:
+    - key: issue-created-trigger
+      function: issue-created-fn
+      events:
+        - avi:jira:issue:created
+
 resources:
   - key: main
     path: frontend/dist
