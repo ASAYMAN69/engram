@@ -6,6 +6,10 @@ app:
   id: ari:cloud:ecosystem::app/109ae825-f25c-40ae-ad6b-1ac96b4efa6c
 
 modules:
+  function:
+    - key: resolver
+      handler: index.handler
+
   jira:issuePanel:
     - key: engram-issue-panel
       resource: main
@@ -20,9 +24,6 @@ resources:
   - key: main
     path: frontend/dist
 
-function:
-  - key: resolver
-    handler: index.handler
 
 permissions:
   scopes:

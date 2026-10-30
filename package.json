@@ -25,5 +25,9 @@
   },
   "devDependencies": {
     "@rollup/rollup-linux-x64-gnu": "^4.67.2"
+  },
+  "dependencies": {
+    "@forge/api": "^8.4.0",
+    "@forge/resolver": "^2.0.2"
   }
 }
